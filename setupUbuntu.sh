@@ -102,7 +102,7 @@ function install_powerlevel {
         sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 	gconftool-2 --set /apps/gnome-terminal/profiles/Default/font --type string "DejaVuSansMono Nerd Font Book 13"
-#        TODO="$TODO"$'\n-) Set the terminal font to "DejaVuSansMono Nerd Font" size "11"'
+        TODO="$TODO"$'\n-) Set the terminal font to "DejaVuSansMono Nerd Font" size "11"'
 	sudo chown -R $USER $HOMEDIR/.oh-my-zsh
 	sudo chown $USER $HOMEDIR/.*zsh*
 }
@@ -149,7 +149,12 @@ function install_telegram {
 	sudo apt-get update
 	sudo apt-get install telegram -y
 	sudo ln -s /opt/telegram/Telegram /bin/telegram
-	telegram &
+#	telegram &
+	cd /tmp
+	socket="$(ls /tmp | grep '{*}')"
+	sudo chmod $USER:$USER $socket
+	cd $HOMEDIR
+	sudo chmod -R $USER:$USER .local/share/TelegramDesktop
 }
 
 function install_phpstorm {
@@ -291,7 +296,7 @@ function install_conky {
 
 function install_node {
 	echo "Installing Node..."
-	sudo apt-get install node -y
+	sudo apt-get install node npm -y
 	sudo npm cache clean -f
 	sudo npm install -g n
 	sudo n stable
@@ -304,9 +309,9 @@ function install_theme {
 	cd $TMP
 	wget https://github.com/anmoljagetia/Flatabulous/archive/master.zip -O flat.zip
 	unzip flat.zip -d $HOMEDIR/.themes
-	sudo add-apt-repository ppa:noobslab/icons
+	sudo add-apt-repository ppa:noobslab/icons -y
 	sudo apt-get update
-	sudo apt-get install ultra-flat-icons
+	sudo apt-get install ultra-flat-icons -y
 }
 
 function install_all {
