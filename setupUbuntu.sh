@@ -149,12 +149,12 @@ function install_telegram {
 	sudo apt-get update
 	sudo apt-get install telegram -y
 	sudo ln -s /opt/telegram/Telegram /bin/telegram
-#	telegram &
 	cd /tmp
 	socket="$(ls /tmp | grep '{*}')"
 	sudo chmod $USER:$USER $socket
 	cd $HOMEDIR
 	sudo chmod -R $USER:$USER .local/share/TelegramDesktop
+	runuser -l $USER -c 'telegram' &
 }
 
 function install_phpstorm {
