@@ -320,10 +320,11 @@ function install_all {
 	install_chromium
 	isntall_shutter
 	install_ccsm
+	install_virtualbox
 	install_docker
 	install_dockercompose
 	install_kvm
-	install_latex
+#	install_latex
 	install_slack
 	install_skype
 	install_java
@@ -336,7 +337,7 @@ function install_all {
 
 all_done=0
 while (( !all_done )); do
-        options=("Install all" "Install ZSH" "Install Powerlevel" "Install IntelliJ" "Install Telegram" "Install Php Storm" "Install Postman" "Install Chromium" "Install Shutter" "Install CCSM" "Install docker" "Install docker-compose" "Install kvm" "Install Latex" "Install Slack" "Install Skype" "Install Java" "Install Conky" "Install Node" "Install Flatabulous Theme" "Quit")
+        options=("Install all" "Install ZSH" "Install Powerlevel" "Install IntelliJ" "Install Telegram" "Install Php Storm" "Install Postman" "Install Chromium" "Install Shutter" "Install CCSM" "Install Virtual Box" "Install docker" "Install docker-compose" "Install kvm" "Install Latex" "Install Slack" "Install Skype" "Install Java" "Install Conky" "Install Node" "Install Flatabulous Theme" "Quit")
 
         echo "Choose an option:"
         select opt in "${options[@]}"; do
@@ -351,17 +352,18 @@ while (( !all_done )); do
 			8) install_chromium; break ;;
 			9) install_shutter; break ;;
 			10) install_ccsm; break ;;
-			11) install_docker; break ;;
-			12) install_dockercompose; break ;;
-			13) install_kvm; break ;;
-			14) install_latex; break ;;
-			15) install_slack; break ;;
-			16) install_skype; break ;;
-			17) install_java; break ;;
-			18) install_conky; break ;;
-			19) install_node; break ;;
-			20) install_theme; break ;;
-			21) echo "$TODO"; all_done=1; break ;;
+			11) install_virtualbox; break ;;
+			12) install_docker; break ;;
+			13) install_dockercompose; break ;;
+			14) install_kvm; break ;;
+			15) install_latex; break ;;
+			16) install_slack; break ;;
+			17) install_skype; break ;;
+			18) install_java; break ;;
+			19) install_conky; break ;;
+			20) install_node; break ;;
+			21) install_theme; break ;;
+			22) echo "$TODO"; all_done=1; break ;;
                         *) echo "What's that?" ;;
                 esac
         done
